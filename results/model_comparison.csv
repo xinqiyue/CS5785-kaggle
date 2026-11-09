@@ -1,0 +1,4 @@
+Model,AUROC,Accuracy
+Linear SVM,0.94299,0.869
+Logistic Regression,0.934869,0.8635
+Naive Bayes,0.8964219999999999,0.8105

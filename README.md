@@ -16,7 +16,7 @@ Binary classification of text passages as human-written (0) or AI-generated (1),
 
 | Model | Validation AUROC | Leave-one-topic-out mean AUROC |
 |---|---|---|
-| Baseline (Linear SVM, word TF-IDF) | 0.9422 | 0.8931 |
+| Baseline (Linear SVM, word TF-IDF) | 0.9423 | 0.8931 |
 | Final (masked + whitespace word TF-IDF) | 0.9670 | 0.9301 |
 
 ## Repository structure

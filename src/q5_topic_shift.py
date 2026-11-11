@@ -9,14 +9,14 @@ so the fixed 2,000-row validation set is never used for training or for choosing
 configuration. Topics are the same K-topic clustering as src/topic_subgroups.py (Q4.2):
 fitted on the 8,000 training texts with the same settings and seed.
 
-This script is self-contained and does NOT touch any earlier outputs.
+This script is self-contained; it does not touch the baseline outputs (src/baseline.py).
 It only writes:
     results/q5_topic_shift/val_comparison.csv  fixed 2,000-row validation set (reporting only)
     results/q5_topic_shift/topic_holdout.csv   leave-one-topic-out on the 8,000 training rows
     results/q5_topic_shift/topic_clusters.csv  size and label balance of each topic cluster
-    submission_q5.csv                          Kaggle submission of the selected configuration
+    submission.csv                             final Kaggle submission (selected configuration)
 
-Configurations (all Linear SVM, C=1, same TF-IDF settings as cs5785kaggle.py):
+Configurations (all Linear SVM, C=1, same TF-IDF settings as src/baseline.py):
     baseline       word TF-IDF, default sklearn tokenizer (= main pipeline)
     ws_word        word TF-IDF, whitespace tokens (punctuation kept)
     masked         content words replaced by "w"; only the TOP_K most frequent
@@ -47,7 +47,7 @@ from sklearn.svm import LinearSVC
 SEED = 42
 DATA_DIR = "data"
 OUT_DIR = os.path.join("results", "q5_topic_shift")
-SUBMISSION_PATH = "submission_q5.csv"   # never overwrites earlier submissions
+SUBMISSION_PATH = "submission.csv"
 
 K_SELECTION_PATH = os.path.join("results", "topic_analysis", "k_selection.csv")
 DEFAULT_N_TOPICS = 11  # used only if src/topic_subgroups.py has not been run
@@ -58,7 +58,7 @@ np.random.seed(SEED)
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ==========================================
-# 1. Data (identical split to cs5785kaggle.py)
+# 1. Data (identical split to src/baseline.py)
 # ==========================================
 
 train = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
@@ -73,7 +73,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 )
 
 # ==========================================
-# 2. Preprocessing (same as cs5785kaggle.py) + masking
+# 2. Preprocessing (same as src/baseline.py) + masking
 # ==========================================
 
 URL_PATTERN = r"https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)"
@@ -229,7 +229,7 @@ FINAL_CONFIG = holdout_df.loc[holdout_df["Mean AUROC"].idxmax(), "Config"]
 print(f"Selected configuration: {FINAL_CONFIG}")
 
 # ==========================================
-# 5. Final model on all 10,000 rows -> submission_q5.csv
+# 5. Final model on all 10,000 rows -> submission.csv
 # ==========================================
 
 print(f"\nRetraining '{FINAL_CONFIG}' on all labeled data...")

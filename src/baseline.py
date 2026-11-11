@@ -531,8 +531,8 @@ assert submission["label"].between(0, 1).all()
 assert submission.columns.tolist() == ["id", "label"]
 assert set(submission["id"]) == set(test["id"])
 
-submission.to_csv("submission.csv", index=False)
+submission.to_csv("submission_baseline.csv", index=False)
 
-print("\nSubmission saved to submission.csv")
+print("\nSubmission saved to submission_baseline.csv")
 print(submission.head())
 print("\nTraining complete!")

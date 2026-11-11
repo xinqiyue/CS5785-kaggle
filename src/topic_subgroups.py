@@ -5,7 +5,7 @@ Run from the repository root:
     python src/topic_subgroups.py
 
 Model analysed: the Linear SVM selected in Q1 (C=1, word TF-IDF with the same settings as
-cs5785kaggle.py), trained on the fixed 8,000-row training split.
+src/baseline.py), trained on the fixed 8,000-row training split.
 
 Topics are found without labels:
     TF-IDF (stop words removed) -> 100-d LSA (TruncatedSVD) -> L2-normalise -> KMeans.
@@ -47,7 +47,7 @@ np.random.seed(SEED)
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ==========================================
-# 1. Data (identical split to cs5785kaggle.py)
+# 1. Data (identical split to src/baseline.py)
 # ==========================================
 
 train = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
@@ -59,7 +59,7 @@ X_train, X_val, y_train, y_val = train_test_split(
 )
 
 # ==========================================
-# 2. Preprocessing (same as cs5785kaggle.py)
+# 2. Preprocessing (same as src/baseline.py)
 # ==========================================
 
 URL_PATTERN = r"https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)"

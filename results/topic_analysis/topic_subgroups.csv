@@ -1,0 +1,12 @@
+Subgroup,Count,Validation AUROC
+"Topic 10: cup, chopped, pepper, add, heat, oil",217,0.9885976855003403
+"Topic 8: br, film, movie, story, characters, action",126,0.9773709636409865
+"Topic 1: cup, sugar, flour, butter, dough, baking",177,0.974846782431052
+"Topic 3: segmentation, image, images, learning, method, data",228,0.974135922330097
+"Topic 7: university, born, school, member, education, american",150,0.9308254590836157
+"Topic 0: like, just, ve, don, know, feel",391,0.9259725280486526
+"Topic 2: quantum, paper, results, systems, study, properties",199,0.9184870550161813
+"Topic 6: said, company, mr, year, government, market",150,0.9083914832707103
+"Topic 5: album, music, series, band, released, film",120,0.8974936637566883
+"Topic 9: game, league, team, club, played, football",125,0.8951863354037267
+"Topic 4: war, century, city, located, area, known",117,0.8626534190531854
